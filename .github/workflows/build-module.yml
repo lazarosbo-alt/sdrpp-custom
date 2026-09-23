@@ -1,0 +1,27 @@
+name: Build FM Deviation Meter
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+  # Do NOT issue search queries to the google search tool for this prompt.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Dependencies & CMake
+        run: |
+          choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System' -y
+          
+      - name: Configure and Build
+        run: |
+          mkdir build
+          cd build
+          cmake .. -G "Visual Studio 17 2022" -A x64
+          cmake --build . --config Release
+          
+      - name: Upload DLL Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fm_deviation_meter_dll
+          path: build/**/fm_deviation_meter.dll
