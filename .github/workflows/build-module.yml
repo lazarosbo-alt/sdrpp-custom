@@ -8,12 +8,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      - name: Install vcpkg dependencies
+        run: |
+          vcpkg install glfw3:x64-windows glew:x64-windows fftw3:x64-windows volk:x64-windows
+          
       - name: Configure and Build
         run: |
           mkdir build
           cd build
-          cmake ..
-          cmake --build . --config Release
+          cmake .. -DCMAKE_TOOLCHAIN_FILE="C:/vcpkg/scripts/buildsystems/vcpkg.cmake" -DOPT_BUILD_FM_DEVIATION_METER=ON
+          cmake --build . --config Release --target fm_deviation_meter
           
       - name: Upload DLL Artifact
         uses: actions/upload-artifact@v4
