@@ -1,0 +1,78 @@
+{
+    "bandColors": {
+        "amateur": "#FF0000FF",
+        "aviation": "#00FF00FF",
+        "broadcast": "#0000FFFF",
+        "marine": "#00FFFFFF",
+        "military": "#FFFF00FF"
+    },
+    "bandPlan": "General",
+    "bandPlanEnabled": true,
+    "bandPlanPos": 0,
+    "centerTuning": false,
+    "colorMap": "Classic",
+    "decimation": 1,
+    "fastFFT": false,
+    "fftHeight": 300,
+    "fftHold": false,
+    "fftHoldSpeed": 60,
+    "fftRate": 20,
+    "fftSize": 65536,
+    "fftSmoothing": false,
+    "fftSmoothingSpeed": 100,
+    "fftWindow": 2,
+    "fftZoom": 1.0,
+    "frequency": 100000000.0,
+    "fullWaterfallUpdate": false,
+    "fullscreen": false,
+    "invertIQ": false,
+    "iqCorrection": false,
+    "lockMenuOrder": false,
+    "manualOffset": 0.0,
+    "max": 0.0,
+    "maximized": false,
+    "menuElements": [
+        {
+            "name": "Source",
+            "open": true
+        },
+        {
+            "name": "Radio",
+            "open": true
+        },
+        {
+            "name": "Recorder",
+            "open": true
+        },
+        {
+            "name": "Sinks",
+            "open": true
+        }
+    ],
+    "menuWidth": 300,
+    "min": -120.0,
+    "modulesDirectory": "./modules",
+    "mpxLineWidth": 2.5,
+    "mpxRefreshRate": 10,
+    "mpxSmoothingFactor": 3,
+    "modules": [
+        "radio",
+        "recorder",
+        "audio_sink",
+        "file_source"
+    ],
+    "offset": 0.0,
+    "resourcesDirectory": "./res",
+    "showWaterfall": true,
+    "source": "",
+    "streams": {},
+    "theme": "Dark",
+    "uiScale": 1.0,
+    "vfoColorScheme": 0,
+    "waterfallHeight": 300,
+    "windowSize": {
+        "h": 720,
+        "w": 1280
+    }
+}
+
