@@ -16,13 +16,10 @@ jobs:
           vcpkg install glfw3:x64-windows glew:x64-windows fftw3:x64-windows volk:x64-windows zstd:x64-windows
 
       - name: Configure and Build
-        shell: cmd
         run: |
-          set INCLUDE=C:\vcpkg\installed\x64-windows\include;%INCLUDE%
-          set LIB=C:\vcpkg\installed\x64-windows\lib;%LIB%
           mkdir build
           cd build
-          cmake .. -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake .. -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_CXX_FLAGS="/I C:/vcpkg/installed/x64-windows/include" -DCMAKE_C_FLAGS="/I C:/vcpkg/installed/x64-windows/include" -DOPT_BUILD_FM_DEVIATION_METER=ON
           cmake --build . --config Release --target fm_deviation_meter
 
       - name: Upload DLL Artifact
