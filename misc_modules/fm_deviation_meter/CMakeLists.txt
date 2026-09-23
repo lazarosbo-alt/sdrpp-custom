@@ -6,7 +6,7 @@ find_package(volk REQUIRED CONFIG)
 find_package(glfw3 REQUIRED)
 
 # Δημιούργησε το dll
-add_library(fm_deviation_meter SHARED main.cpp src/main.cpp)
+add_library(fm_deviation_meter SHARED src/main.cpp)
 
 # Βάλε εδώ τα include paths (και του module, και του πυρήνα της SDR++)
 target_include_directories(fm_deviation_meter PRIVATE
