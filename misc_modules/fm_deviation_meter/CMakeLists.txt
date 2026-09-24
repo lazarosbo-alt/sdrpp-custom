@@ -1,14 +1,15 @@
 cmake_minimum_required(VERSION 3.13)
 project(fm_deviation_meter)
 
-add_library(fm_deviation_meter SHARED src/main.cpp)
-target_link_libraries(fm_deviation_meter PRIVATE sdrpp_core)
+# Ενσωμάτωση του επίσημου template για τα modules του SDR++
+include(${SDRPP_MODULE_CMAKE})
 
-# Χρήση της επίσημης μεταβλητής του SDR++ για τα core headers
-target_include_directories(fm_deviation_meter PRIVATE 
-    ${SDRPP_CORE_ROOT}
-    ${SDRPP_CORE_ROOT}/imgui
+# Δημιουργία του module με την εντολή που αναγνωρίζει το SDR++
+add_sdrpp_module(fm_deviation_meter
+    src/main.cpp
 )
+
+target_link_libraries(fm_deviation_meter PRIVATE sdrpp_core)
 
 # Διασφάλιση προτύπου C++17 για τον MSVC
 set_property(TARGET fm_deviation_meter PROPERTY CXX_STANDARD 17)
