@@ -59,6 +59,7 @@ option(OPT_BUILD_WEATHER_SAT_DECODER "Build the HRPT decoder module (no dependen
 
 # Misc
 option(OPT_BUILD_DISCORD_PRESENCE "Build the Discord Rich Presence module" ON)
+option(OPT_BUILD_FM_DEVIATION_METER "Build FM Deviation Meter module" ON)
 option(OPT_BUILD_FREQUENCY_MANAGER "Build the Frequency Manager module" ON)
 option(OPT_BUILD_IQ_EXPORTER "Build the IQ Exporter module" ON)
 option(OPT_BUILD_RECORDER "Audio and baseband recorder" ON)
@@ -314,6 +315,10 @@ if (OPT_BUILD_DISCORD_PRESENCE)
 add_subdirectory("misc_modules/discord_integration")
 endif (OPT_BUILD_DISCORD_PRESENCE)
 
+if (OPT_BUILD_FM_DEVIATION_METER)
+add_subdirectory("misc_modules/fm_deviation_meter")
+endif (OPT_BUILD_FM_DEVIATION_METER)
+
 if (OPT_BUILD_FREQUENCY_MANAGER)
 add_subdirectory("misc_modules/frequency_manager")
 endif (OPT_BUILD_FREQUENCY_MANAGER)
@@ -413,6 +418,3 @@ endif ()
 # Create uninstall target
 configure_file(${CMAKE_SOURCE_DIR}/cmake_uninstall.cmake ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake @ONLY)
 add_custom_target(uninstall ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
-
-# Create headers target
-add_subdirectory(misc_modules/fm_deviation_meter)
