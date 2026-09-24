@@ -49,6 +49,7 @@ endif()
 # Include core headers
 target_include_directories(sdrpp_core PUBLIC "src/")
 target_include_directories(sdrpp_core PUBLIC "src/imgui")
+target_include_directories(sdrpp_core PUBLIC "C:/vcpkg/installed/x64-windows/include")
 
 # Configure backend includes and libraries
 if (OPT_BACKEND_GLFW)
