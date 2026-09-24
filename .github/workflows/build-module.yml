@@ -15,6 +15,15 @@ jobs:
         run: |
           vcpkg install glfw3:x64-windows glew:x64-windows fftw3:x64-windows volk:x64-windows zstd:x64-windows
 
+      - name: Force Fix Volk Headers
+        shell: pwsh
+        run: |
+          # Αντιγραφή του φακέλου volk απευθείας μέσα στον πηγαίο κώδικα του core
+          Copy-Item -Path "C:\vcpkg\installed\x64-windows\include\volk" -Destination "core\src\volk" -Recurse -Force
+          # Δημιουργία ψεύτικου PothosSDR για να μην παραπονιέται το CMake του SDR++
+          New-Item -ItemType Directory -Force -Path "C:\Program Files\PothosSDR\include\volk"
+          Copy-Item -Path "C:\vcpkg\installed\x64-windows\include\volk\*" -Destination "C:\Program Files\PothosSDR\include\volk\" -Recurse -Force
+
       - name: Configure and Build
         shell: pwsh
         run: |
