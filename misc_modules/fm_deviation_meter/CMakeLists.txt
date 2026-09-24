@@ -4,7 +4,12 @@ project(fm_deviation_meter)
 add_library(fm_deviation_meter SHARED src/main.cpp)
 target_link_libraries(fm_deviation_meter sdrpp_core)
 
-# Ενεργοποίηση C++17 για τον MSVC ώστε να αναγνωριστούν τα namespaces και η κλάση Module
+# Προσθήκη της διαδρομής του core για να βρίσκει το module.h, json.hpp κλπ.
+target_include_directories(fm_deviation_meter PRIVATE 
+    ${CMAKE_SOURCE_DIR}/core/src
+)
+
+# Ενεργοποίηση C++17 για τον MSVC
 set_property(TARGET fm_deviation_meter PROPERTY CXX_STANDARD 17)
 set_property(TARGET fm_deviation_meter PROPERTY CXX_STANDARD_REQUIRED ON)
 
